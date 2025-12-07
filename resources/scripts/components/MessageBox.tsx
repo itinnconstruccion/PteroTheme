@@ -41,7 +41,16 @@ const getBackground = (type?: FlashMessageType): TwStyle | string => {
 };
 
 const Container = styled.div<{ $type?: FlashMessageType }>`
-    ${tw`p-2 border items-center leading-normal rounded flex w-full text-sm text-white`};
+    ${tw`w-full text-sm text-white`};
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.03);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    animation: subtle-fade-up 300ms cubic-bezier(.2,.8,.2,1) both;
     ${(props) => styling(props.$type)};
 `;
 Container.displayName = 'MessageBox.Container';
@@ -49,17 +58,19 @@ Container.displayName = 'MessageBox.Container';
 const MessageBox = ({ title, children, type }: Props) => (
     <Container css={tw`lg:inline-flex`} $type={type} role={'alert'}>
         {title && (
-            <span
-                className={'title'}
-                css={[
-                    tw`flex rounded-full uppercase px-2 py-1 text-xs font-bold mr-3 leading-none`,
-                    getBackground(type),
-                ]}
-            >
-                {title}
-            </span>
-        )}
-        <span css={tw`mr-2 text-left flex-auto`}>{children}</span>
+                <span
+                    className={'title'}
+                    css={[
+                        tw`flex items-center rounded-full uppercase px-3 py-1 text-xs font-bold mr-0 leading-none`,
+                        getBackground(type),
+                        tw`shadow-sm`
+                    ]}
+                >
+                    {title}
+                </span>
+            )}
+            <div css={tw`flex-auto mr-2`}>{children}</div>
+            {/* small close / x area can be added here if needed */}
     </Container>
 );
 MessageBox.displayName = 'MessageBox';

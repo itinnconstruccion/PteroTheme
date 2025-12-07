@@ -1,7 +1,9 @@
 .button {
     @apply px-4 py-2 inline-flex items-center justify-center;
-    @apply rounded text-base font-semibold transition-all duration-100;
+    @apply rounded-lg text-base font-semibold transition-transform duration-200 ease-out;
     @apply focus:ring-[3px] focus:ring-offset-2 focus:ring-offset-gray-700 focus:ring-opacity-50;
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
 
     /* Sizing Controls */
     &.small {
@@ -14,6 +16,7 @@
 
     &.secondary {
         @apply text-gray-50 bg-transparent;
+        border: 1px solid rgba(255,255,255,0.04);
 
         &:disabled {
             background: transparent !important;
@@ -25,7 +28,7 @@
     }
 
     &.square {
-        @apply p-0 w-12 h-12;
+        @apply p-0 w-12 h-12 rounded-md;
 
         &.small {
             @apply w-8 h-8;
@@ -34,15 +37,25 @@
 }
 
 .primary {
-    @apply bg-blue-600 text-blue-50;
-    @apply hover:bg-blue-500 active:bg-blue-500 focus:ring-blue-400 focus:ring-opacity-75;
+    /* Glassy primary */
+    background: linear-gradient(180deg, rgba(239,68,68,0.12), rgba(239,68,68,0.06));
+    color: #fff;
+    border: 1px solid rgba(239,68,68,0.18);
+    box-shadow: 0 8px 24px rgba(239,68,68,0.06), inset 0 1px 0 rgba(255,255,255,0.03);
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(239,68,68,0.12);
+    }
 
     &.secondary {
-        @apply hover:bg-blue-600 active:bg-blue-600;
+        @apply hover:bg-red-600 active:bg-red-600;
     }
 
     &:disabled {
-        @apply bg-blue-500/75 text-blue-200/75;
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 }
 

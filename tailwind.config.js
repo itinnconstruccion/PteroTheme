@@ -29,7 +29,9 @@ module.exports = {
                 primary: colors.blue,
                 gray: gray,
                 neutral: gray,
-                cyan: colors.cyan,
+                // Map the 'cyan' semantic name used across the app to a red palette
+                // so existing components using `theme('colors.cyan.*')` become red-themed.
+                cyan: colors.red,
             },
             fontSize: {
                 '2xs': '0.625rem',

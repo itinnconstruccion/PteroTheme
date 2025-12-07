@@ -400,6 +400,73 @@ span[aria-labelledby="select2-pUserId-container"] {
     background-color: #408fec;
 }
 
+/* ---------- Theme overrides: remap AdminLTE 'skin-blue' to our red/glassy theme ---------- */
+:root {
+    --ptero-accent: #ef4444; /* accent (red 500) */
+    --ptero-accent-600: #dc2626;
+    --ptero-accent-800: #991b1b;
+    --ptero-bg: #0f1720;
+}
+
+/* Header / Navbar */
+.skin-blue .main-header .navbar {
+    background-color: var(--ptero-accent-600) !important;
+}
+.skin-blue .main-header .navbar .nav>li>a,
+.skin-blue .main-header .navbar .nav>li>a:hover {
+    color: #fff !important;
+}
+.skin-blue .main-header .logo {
+    background-color: var(--ptero-accent) !important;
+    color: #fff !important;
+}
+.skin-blue .main-header .logo:hover { background-color: var(--ptero-accent-600) !important; }
+
+/* Sidebar */
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #0f1115 !important;
+}
+.skin-blue .sidebar-menu>li>a { color: rgba(255,255,255,0.85) !important; }
+.skin-blue .sidebar-menu>li.active>a { background: linear-gradient(180deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02)) !important; border-left-color: var(--ptero-accent) !important; }
+.skin-blue .sidebar-menu>li:hover>a { background: rgba(255,255,255,0.02) !important; }
+
+/* Sidebar form inputs */
+.skin-blue .sidebar-form input[type="text"], .skin-blue .sidebar-form .btn {
+    background-color: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(255,255,255,0.03) !important;
+    color: #ddd !important;
+}
+
+/* Active link / tabs */
+.skin-blue .sidebar-menu>li.active>a, .skin-blue .nav-tabs-custom > .nav-tabs > li.active > a {
+    color: #fff !important;
+}
+
+/* Buttons, badges and alerts to use accent */
+.skin-blue .btn-primary, .skin-blue .btn-primary:hover, .skin-blue .alert-info {
+    background-color: var(--ptero-accent) !important;
+    border-color: var(--ptero-accent-600) !important;
+}
+.skin-blue .label-primary { background-color: var(--ptero-accent) !important; }
+
+/* Make dropdowns and other UI elements slightly glassy */
+.skin-blue .dropdown-menu {
+    background: linear-gradient(180deg, rgba(15,15,18,0.9), rgba(10,10,12,0.85)) !important;
+    border: 1px solid rgba(255,255,255,0.03) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6) !important;
+}
+
+/* Reduce visual noise for selected/hover states */
+.skin-blue .nav > li > a:hover, .skin-blue .nav > li > a:focus { background: rgba(255,255,255,0.02) !important; }
+
+/* Ensure contrast for header badges */
+.skin-blue .main-header .navbar .nav .open > a, .skin-blue .main-header .navbar .nav > li > a { color: #fff !important; }
+
+/* Small helper: smoother transitions for AdminLTE elements we override */
+.skin-blue .sidebar-menu li a, .skin-blue .main-header .navbar { transition: background-color 180ms ease, color 180ms ease; }
+
+/* End overrides */
+
 .strong {
     font-weight: bold !important;
 }
